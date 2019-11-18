@@ -11,6 +11,7 @@ public class RegisterTest {
 
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get("http://testfasttrackit.info/selenium-test/");
 
         WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a"));
@@ -19,9 +20,9 @@ public class RegisterTest {
         WebElement register = driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a"));
         register.click();
 
-        driver.findElement(By.name("firstname")).sendKeys("Adrian");
+        driver.findElement(By.name("firstname")).sendKeys("Vlad");
 
-        driver.findElement(By.id("lastname")).sendKeys("Razvan");
+        driver.findElement(By.id("lastname")).sendKeys("Popa");
 
         driver.findElement(By.id("email_address")).sendKeys("vladpopa84@outlook.com");
 
@@ -29,6 +30,8 @@ public class RegisterTest {
         driver.findElement(By.name("confirmation")).sendKeys("Iphone7+");
 
         driver.findElement(By.className("checkbox")).click();
+
+//        driver.close();
 
     }
 }
