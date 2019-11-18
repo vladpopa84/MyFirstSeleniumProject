@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.jupiter.api.Test;
 
-
 public class Main {
     public static void main(String[] args) {
 

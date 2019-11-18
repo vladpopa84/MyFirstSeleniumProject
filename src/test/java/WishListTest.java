@@ -1,10 +1,13 @@
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.jupiter.api.Test;
+
 
 public class WishListTest {
+
+    @Test
 
     public static void addToWishList() {
 
@@ -32,7 +35,6 @@ public class WishListTest {
         driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > ul.add-to-links > li:nth-child(1) > a")).click();
 
 //        driver.close();
-
 
 
     }
