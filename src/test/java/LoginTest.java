@@ -35,6 +35,12 @@ public class LoginTest {
 
         WebElement welcomeMessage = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > div.welcome-msg > p.hello > strong"));
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Assert.assertEquals(welcomeMessage.getText(), "Hello, sgdsgv dfvbs dsvsdvss!");
     }
 
@@ -55,13 +61,13 @@ public class LoginTest {
 
         driver.findElement(By.cssSelector("#send2")).click();
 
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
         WebElement advicePass = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"));
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Assert.assertEquals(advicePass.getText().trim(), "Invalid login or password.");
 
@@ -92,6 +98,12 @@ public class LoginTest {
 //        }
 
         WebElement advicePass = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"));
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Assert.assertEquals(advicePass.getText().trim(), "Invalid login or password.");
 

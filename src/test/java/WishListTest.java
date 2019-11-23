@@ -39,6 +39,12 @@ public class WishListTest {
         WebElement product = driver.findElement(By.cssSelector("#product-collection-image-423"));
         product.click();
         driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > ul.add-to-links > li:nth-child(1) > a")).click();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @After

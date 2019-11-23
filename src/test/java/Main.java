@@ -7,15 +7,15 @@ import org.junit.*;
 public class Main {
     public static void main(String[] args) {
 
-//        LoginTest login = new LoginTest();
-//       WishListTest wish = new WishListTest();
-        RegisterTest register = new RegisterTest();
+        LoginTest loginTest = new LoginTest();
+        WishListTest wishListTest = new WishListTest();
+        RegisterTest registerTest = new RegisterTest();
 
-//        login.loginTest();
-//        login.invalidPassword();
-//        login.invalidEmail();
-//       wish.addToWishList();
-        register.registerNewUser();
+        loginTest.loginTest();
+        loginTest.invalidEmail();
+        loginTest.invalidPassword();
+        wishListTest.addToWishList();
+        registerTest.registerNewUser();
 
 
     }

@@ -1,4 +1,6 @@
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,6 +39,12 @@ public class RegisterTest {
         driver.findElement(By.name("confirmation")).sendKeys("Iphone7+");
 
         driver.findElement(By.className("checkbox")).click();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @After
