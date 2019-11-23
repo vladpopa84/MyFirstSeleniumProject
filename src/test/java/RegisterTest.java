@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -23,11 +24,14 @@ public class RegisterTest {
 
         driver.get("http://testfasttrackit.info/selenium-test/");
 
-        WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a"));
+        WebElement account = driver.findElement(By.cssSelector("a.skip-account"));
         account.click();
 
-        WebElement register = driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a"));
+        WebElement register = driver.findElement(By.cssSelector("div.links>ul>li:nth-last-child(2)>a"));
         register.click();
+
+        WebElement registerPage = driver.findElement(By.cssSelector("div.page-title"));
+        Assert.assertEquals(registerPage.getText(), "CREATE AN ACCOUNT");
 
         driver.findElement(By.name("firstname")).sendKeys("Vlad");
 

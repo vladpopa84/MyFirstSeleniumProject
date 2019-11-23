@@ -21,10 +21,10 @@ public class LoginTest {
 
         driver.get("http://testfasttrackit.info/selenium-test/");
 
-        WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement account = driver.findElement(By.cssSelector("a.skip-account"));
         account.click();
 
-        WebElement login = driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a"));
+        WebElement login = driver.findElement(By.cssSelector("div.links>ul>li.last>a"));
         login.click();
 
         driver.findElement(By.cssSelector("#email")).sendKeys("vladpopa84@yahoo.com");
@@ -33,7 +33,7 @@ public class LoginTest {
 
         driver.findElement(By.cssSelector("#send2")).click();
 
-        WebElement welcomeMessage = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > div.welcome-msg > p.hello > strong"));
+        WebElement welcomeMessage = driver.findElement(By.cssSelector("p.hello>strong"));
 
         try {
             Thread.sleep(5000);
@@ -49,10 +49,10 @@ public class LoginTest {
 
         driver.get("http://testfasttrackit.info/selenium-test/");
 
-        WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement account = driver.findElement(By.cssSelector("a.skip-account"));
         account.click();
 
-        WebElement login = driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a"));
+        WebElement login = driver.findElement(By.cssSelector("div.links>ul>li.last>a"));
         login.click();
 
         driver.findElement(By.cssSelector("#email")).sendKeys("vladpopa84@yahoo.com");
@@ -61,7 +61,7 @@ public class LoginTest {
 
         driver.findElement(By.cssSelector("#send2")).click();
 
-        WebElement advicePass = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"));
+        WebElement advicePass = driver.findElement(By.cssSelector("li.error-msg >ul>li>span"));
 
         try {
             Thread.sleep(5000);
@@ -79,10 +79,10 @@ public class LoginTest {
 
         driver.get("http://testfasttrackit.info/selenium-test/");
 
-        WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        WebElement account = driver.findElement(By.cssSelector("a.skip-account"));
         account.click();
 
-        WebElement login = driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a"));
+        WebElement login = driver.findElement(By.cssSelector("div.links>ul>li.last>a"));
         login.click();
 
         driver.findElement(By.cssSelector("#email")).sendKeys("vladpopa84@yaho.com");
@@ -97,7 +97,7 @@ public class LoginTest {
 //            e.printStackTrace();
 //        }
 
-        WebElement advicePass = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"));
+        WebElement advicePass = driver.findElement(By.cssSelector("li.error-msg >ul>li>span"));
 
         try {
             Thread.sleep(5000);
