@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,14 +7,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WishListTest {
 
-    @Test
+    private WebDriver driver;
 
-    public static void addToWishList() {
-
+    @Before
+    public void initDriver() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
+    }
+
+    @Test
+    public void addToWishList() {
+
         driver.get("http://testfasttrackit.info/selenium-test/");
+
 
 //        WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
 //        account.click();
@@ -33,9 +39,13 @@ public class WishListTest {
         WebElement product = driver.findElement(By.cssSelector("#product-collection-image-423"));
         product.click();
         driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > ul.add-to-links > li:nth-child(1) > a")).click();
-
-//        driver.close();
-
-
     }
+
+    @After
+    public void quitDriver() {
+
+        driver.quit();
+    }
+
 }
+

@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,13 +7,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest {
 
-    @Test
+    private WebDriver driver;
 
-    public static void loginTest() {
-
+    @Before
+    public void initDriver() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
+    }
+
+    @Test
+    public void loginTest() {
+
         driver.get("http://testfasttrackit.info/selenium-test/");
 
         WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
@@ -28,15 +33,14 @@ public class LoginTest {
 
         driver.findElement(By.cssSelector("#send2")).click();
 
-//        driver.close();
+        WebElement welcomeMessage = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col2-left-layout > div > div.col-main > div.my-account > div > div.welcome-msg > p.hello > strong"));
 
+        Assert.assertEquals(welcomeMessage.getText(), "Hello, sgdsgv dfvbs dsvsdvss!");
     }
 
-    public static void invalidLogin() {
+    @Test
+    public void invalidPassword() {
 
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.get("http://testfasttrackit.info/selenium-test/");
 
         WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
@@ -51,7 +55,53 @@ public class LoginTest {
 
         driver.findElement(By.cssSelector("#send2")).click();
 
-//        driver.close();
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        WebElement advicePass = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"));
+
+        Assert.assertEquals(advicePass.getText().trim(), "Invalid login or password.");
 
     }
+
+
+    @Test
+    public void invalidEmail() {
+
+        driver.get("http://testfasttrackit.info/selenium-test/");
+
+        WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        account.click();
+
+        WebElement login = driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a"));
+        login.click();
+
+        driver.findElement(By.cssSelector("#email")).sendKeys("vladpopa84@yaho.com");
+
+        driver.findElement(By.cssSelector("#pass")).sendKeys("30111984");
+
+        driver.findElement(By.cssSelector("#send2")).click();
+
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        WebElement advicePass = driver.findElement(By.cssSelector("body > div > div.page > div.main-container.col1-layout > div > div > div.account-login > ul > li > ul > li > span"));
+
+        Assert.assertEquals(advicePass.getText().trim(), "Invalid login or password.");
+
+    }
+
+    @After
+    public void quitDriver() {
+
+        driver.quit();
+    }
+
+
 }

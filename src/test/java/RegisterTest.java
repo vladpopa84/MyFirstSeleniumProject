@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,13 +7,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class RegisterTest {
 
-    @Test
+    private WebDriver driver;
 
-    public static void registerNewUser() {
-
+    @Before
+    public void initDriver() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
+    }
+
+    @Test
+    public void registerNewUser() {
+
         driver.get("http://testfasttrackit.info/selenium-test/");
 
         WebElement account = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a"));
@@ -32,8 +37,13 @@ public class RegisterTest {
         driver.findElement(By.name("confirmation")).sendKeys("Iphone7+");
 
         driver.findElement(By.className("checkbox")).click();
-
-//        driver.close();
-
     }
+
+    @After
+    public void quitDriver() {
+
+        driver.quit();
+    }
+
 }
+
