@@ -41,6 +41,7 @@ public class RegisterTest {
 
     @After
     public void quitDriver() {
+
         driver.quit();
     }
 
