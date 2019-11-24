@@ -10,12 +10,14 @@ public class Main {
         LoginTest loginTest = new LoginTest();
         WishListTest wishListTest = new WishListTest();
         RegisterTest registerTest = new RegisterTest();
+        SearchTest searchTest = new SearchTest();
 
         loginTest.loginTest();
         loginTest.invalidEmail();
         loginTest.invalidPassword();
         wishListTest.addToWishList();
         registerTest.registerNewUser();
+        searchTest.searchTest();
 
 
     }
