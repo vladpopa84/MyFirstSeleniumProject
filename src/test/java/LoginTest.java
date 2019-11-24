@@ -91,11 +91,6 @@ public class LoginTest {
 
         driver.findElement(By.cssSelector("#send2")).click();
 
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
 
         WebElement advicePass = driver.findElement(By.cssSelector("li.error-msg >ul>li>span"));
 

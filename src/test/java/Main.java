@@ -11,6 +11,7 @@ public class Main {
         WishListTest wishListTest = new WishListTest();
         RegisterTest registerTest = new RegisterTest();
         SearchTest searchTest = new SearchTest();
+        ChangeLanguage language = new ChangeLanguage();
 
         loginTest.loginTest();
         loginTest.invalidEmail();
@@ -18,6 +19,7 @@ public class Main {
         wishListTest.addToWishList();
         registerTest.registerNewUser();
         searchTest.searchTest();
+        language.changeLanguage();
 
 
     }
