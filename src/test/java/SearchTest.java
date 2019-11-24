@@ -12,11 +12,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SearchTest {
 
     private WebDriver driver;
+    String searchKeyword;
 
     @Before
     public void initDriver() {
@@ -31,17 +31,19 @@ public class SearchTest {
 
         WebElement search = driver.findElement(By.cssSelector("#search"));
         search.click();
-        search.sendKeys("linen");
+        searchKeyword = "linen";
+        search.sendKeys(searchKeyword);
 
-        WebElement searchButton = driver.findElement(By.cssSelector("#search_mini_form > div.input-box > button"));
+
+        WebElement searchButton = driver.findElement(By.cssSelector("button.search-button"));
         searchButton.click();
 
         List<WebElement> productNames = driver.findElements(By.cssSelector("h2 a"));
 
         for (WebElement productNamesElement : productNames) {
-            assertThat("Some of the returned products' names do not contain the searched keyword.",
+            MatcherAssert.assertThat("Some of the returned products' names do not contain the searched keyword.",
                     productNamesElement.getText(),
-                    containsString("LINEN"));
+                    containsString(searchKeyword.toUpperCase()));
         }
 
 
@@ -53,9 +55,11 @@ public class SearchTest {
 
         WebElement search = driver.findElement(By.cssSelector("#search"));
         search.click();
-        search.sendKeys("vase");
+        searchKeyword = "vase";
+        search.sendKeys(searchKeyword);
 
-        WebElement searchButton = driver.findElement(By.cssSelector("#search_mini_form > div.input-box > button"));
+
+        WebElement searchButton = driver.findElement(By.cssSelector("button.search-button"));
         searchButton.click();
 
         List<WebElement> productNames = driver.findElements(By.cssSelector("h2 a"));
@@ -63,10 +67,25 @@ public class SearchTest {
         for (WebElement productNameElement : productNames) {
             MatcherAssert.assertThat("Some of the returned products' names do not contain the searched keyword.",
                     productNameElement.getText(),
-                    containsString("VASE"));
+                    containsString(searchKeyword.toUpperCase()));
         }
 
     }
+
+//    @Test
+//    public void checkInputValue() {
+//
+//        driver.get("http://testfasttrackit.info/selenium-test/");
+//
+//        WebElement search = driver.findElement(By.cssSelector("#search"));
+//        search.click();
+//        search.sendKeys("vase");
+//
+//        WebElement input = driver.findElement(By.cssSelector("#search"));
+//        input.getCssValue();
+
+
+//    }
 
     @After
     public void quitDriver() {
