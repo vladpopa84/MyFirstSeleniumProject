@@ -12,6 +12,7 @@ public class Main {
         RegisterTest registerTest = new RegisterTest();
         SearchTest searchTest = new SearchTest();
         ChangeLanguage language = new ChangeLanguage();
+        CartTest addToCart = new CartTest();
 
         loginTest.loginTest();
         loginTest.invalidEmail();
@@ -20,6 +21,7 @@ public class Main {
         registerTest.registerNewUser();
         searchTest.searchTest();
         language.changeLanguage();
+        addToCart.addToCart();
 
 
     }
