@@ -72,20 +72,20 @@ public class SearchTest {
 
     }
 
-//    @Test
-//    public void checkInputValue() {
-//
-//        driver.get("http://testfasttrackit.info/selenium-test/");
-//
-//        WebElement search = driver.findElement(By.cssSelector("#search"));
-//        search.click();
-//        search.sendKeys("vase");
-//
-//        WebElement input = driver.findElement(By.cssSelector("#search"));
-//        input.getCssValue();
+    @Test
+    public void checkInputValue() {
 
+        driver.get("http://testfasttrackit.info/selenium-test/");
 
-//    }
+        WebElement search = driver.findElement(By.cssSelector("#search"));
+        search.click();
+        searchKeyword = "pantaloni";
+        search.sendKeys(searchKeyword);
+
+        WebElement input = driver.findElement(By.cssSelector("#search"));
+        Assert.assertEquals(input.getAttribute("value"), searchKeyword);
+
+    }
 
     @After
     public void quitDriver() {
