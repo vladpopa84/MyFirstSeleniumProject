@@ -1,4 +1,3 @@
-import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Assert;
@@ -8,9 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.support.ui.Select;
 import java.util.List;
-
 import static org.hamcrest.CoreMatchers.containsString;
 
 public class SearchTest {
@@ -23,6 +21,21 @@ public class SearchTest {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+    }
+
+    @Test
+    public void checkInputValue() {
+
+        driver.get("http://testfasttrackit.info/selenium-test/");
+
+        WebElement search = driver.findElement(By.cssSelector("#search"));
+        search.click();
+        searchKeyword = "pantaloni";
+        search.sendKeys(searchKeyword);
+
+        WebElement input = driver.findElement(By.cssSelector("#search"));
+        Assert.assertEquals(input.getAttribute("value"), searchKeyword);
+
     }
 
     @Test
@@ -50,7 +63,7 @@ public class SearchTest {
     }
 
     @Test
-    public void searchTest2() {
+    public void searchTest2() throws InterruptedException {
         driver.get("http://testfasttrackit.info/selenium-test/");
 
         WebElement search = driver.findElement(By.cssSelector("#search"));
@@ -70,26 +83,19 @@ public class SearchTest {
                     containsString(searchKeyword.toUpperCase()));
         }
 
-    }
+        Select sortByElement = new Select(driver.findElement(By.cssSelector(".category-products >.toolbar  select[title='Sort By']")));
+        sortByElement.selectByIndex(2);
 
-    @Test
-    public void checkInputValue() {
+        WebElement sortDescending = driver.findElement(By.cssSelector(".category-products > .toolbar .sort-by-switcher"));
+        sortDescending.click();
 
-        driver.get("http://testfasttrackit.info/selenium-test/");
-
-        WebElement search = driver.findElement(By.cssSelector("#search"));
-        search.click();
-        searchKeyword = "pantaloni";
-        search.sendKeys(searchKeyword);
-
-        WebElement input = driver.findElement(By.cssSelector("#search"));
-        Assert.assertEquals(input.getAttribute("value"), searchKeyword);
+        Thread.sleep(3000);
 
     }
+
 
     @After
     public void quitDriver() {
-
         driver.quit();
     }
 }

@@ -1,3 +1,4 @@
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.Random;
 
 
 public class RegisterTest {
@@ -30,30 +33,37 @@ public class RegisterTest {
         WebElement register = driver.findElement(By.cssSelector("div.links>ul>li:nth-last-child(2)>a"));
         register.click();
 
-        WebElement registerPage = driver.findElement(By.cssSelector("div.page-title"));
-        Assert.assertEquals(registerPage.getText(), "CREATE AN ACCOUNT");
 
-        driver.findElement(By.name("firstname")).sendKeys("Vlad");
+        String firstName = RandomStringUtils.randomAlphabetic(5);
+        driver.findElement(By.name("firstname")).sendKeys(firstName);
 
-        driver.findElement(By.id("lastname")).sendKeys("Popa");
+        String lastName = RandomStringUtils.randomAlphabetic(6);
+        driver.findElement(By.id("lastname")).sendKeys(lastName);
 
-        driver.findElement(By.id("email_address")).sendKeys("vladpopa84@outlook.com");
+        String emailAdress = RandomStringUtils.randomAlphabetic(8) + "@yahoo.com";
+        driver.findElement(By.id("email_address")).sendKeys(emailAdress);
 
-        driver.findElement(By.name("password")).sendKeys("Iphone7+");
-        driver.findElement(By.name("confirmation")).sendKeys("Iphone7+");
+        String password = RandomStringUtils.randomAlphabetic(6);
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.name("confirmation")).sendKeys(password);
 
-        driver.findElement(By.className("checkbox")).click();
+//        driver.findElement(By.className("checkbox")).click();
+
+        WebElement registerButton = driver.findElement(By.cssSelector(".button[title='Register']"));
+        registerButton.click();
 
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        WebElement successMsg = driver.findElement(By.cssSelector(".success-msg>ul>li>span"));
+        Assert.assertEquals(successMsg.getText(), "Thank you for registering with Madison Island.");
     }
 
     @After
     public void quitDriver() {
-
         driver.quit();
     }
 
