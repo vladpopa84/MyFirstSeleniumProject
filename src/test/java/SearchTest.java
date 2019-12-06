@@ -8,7 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
 import java.util.List;
+
 import static org.hamcrest.CoreMatchers.containsString;
 
 public class SearchTest {
@@ -83,13 +85,13 @@ public class SearchTest {
                     containsString(searchKeyword.toUpperCase()));
         }
 
+
         Select sortByElement = new Select(driver.findElement(By.cssSelector(".category-products >.toolbar  select[title='Sort By']")));
         sortByElement.selectByIndex(2);
 
         WebElement sortDescending = driver.findElement(By.cssSelector(".category-products > .toolbar .sort-by-switcher"));
         sortDescending.click();
 
-        Thread.sleep(3000);
 
     }
 
